@@ -197,3 +197,24 @@ void Sudoku::solveSudoku()
 
     print();
 }
+void Sudoku::insertFromFile() 
+{
+    ifstream inFile;
+
+    inFile.open("tests.txt");
+
+    if(inFile.fail()) 
+    {
+        cout << endl << "Error opening file :(" << endl;
+    }
+
+    for (int i = 0; i < board.size(); i++) 
+    {
+        for(int j = 0; j < board.size(); j++) 
+        {
+            inFile >> board.at(i).at(j);
+        }
+    }
+
+    inFile.close();
+}

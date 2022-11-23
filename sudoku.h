@@ -1,6 +1,7 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <fstream>
 
 
 using namespace std;
@@ -22,6 +23,7 @@ public:
     
     void print();
     void solveSudoku();
+    void insertFromFile();
 
     Sudoku();
     Sudoku(vector<vector<char>> temp);
