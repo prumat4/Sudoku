@@ -13,6 +13,9 @@ class Sudoku
     bool isValidPlace(const int& row, const int& col,const char& number);
     bool solver();
     bool isValidSudoku();
+    
+    void fillBoard(ifstream& file);
+    void appendBoardToFile(ofstream& file);
 
     // leetcode
     // runtime: 32ms, 
@@ -22,10 +25,13 @@ public:
     
     void print();
     void solveSudoku();
+    
     void insertFromFile();
-    void testCases(); 
+    void writeInFile();
+    
+    void Tests(); 
 
-    void fillBoard(ifstream& file);
+
 
     Sudoku();
     Sudoku(vector<vector<char>> temp);

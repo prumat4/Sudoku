@@ -213,7 +213,7 @@ void Sudoku::insertFromFile()
 {
     ifstream inFile;
 
-    inFile.open("validSudokus.txt");
+    inFile.open("inFile.txt");
 
     if(inFile.fail()) 
     {
@@ -225,22 +225,64 @@ void Sudoku::insertFromFile()
     inFile.close();
 }
 
-void Sudoku::testCases() 
+void Sudoku::Tests() 
 {
     ifstream inFile;
+    ofstream outFile;
 
-    inFile.open("validSudokus.txt");
+    inFile.open("testCases.txt");
+    outFile.open("testCasesSolved.txt");
 
     while(true) 
-    {
-        fillBoard(inFile);
-        solveSudoku();
+    {   
+
         if(inFile.fail()) 
         {
             cout << endl << "All sudokus are solved OR filing opening the fail" << endl;
             break;
         }
+
+        fillBoard(inFile);
+        solveSudoku();
+        appendBoardToFile(outFile);
     }
 
     inFile.close();
+    outFile.close();
+}
+
+void Sudoku::appendBoardToFile(ofstream& file) 
+{
+    for (int i = 0; i < board.size(); i++) 
+    {   
+        if((i % 3 == 0) && (i != 0)) 
+        {
+            file << "  ------+-------+------" << endl;
+        } 
+        file << "  ";
+
+        for(int j = 0; j < board.size(); j++) 
+        {   
+
+            if((j % 3 == 0) && (j != 0)) 
+            {
+                file << "| ";
+            }
+            file << board.at(i).at(j) << " ";
+        }
+        file << endl;
+    } 
+
+    file << endl << endl;
+}
+
+void Sudoku::writeInFile() 
+{
+    ofstream outFile;
+
+    outFile.open("outFile.txt");
+    
+    appendBoardToFile(outFile);
+
+    outFile.close();    
 }
