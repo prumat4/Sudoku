@@ -3,7 +3,6 @@
 #include <vector>
 #include <fstream>
 
-
 using namespace std;
 
 class Sudoku 
@@ -24,6 +23,9 @@ public:
     void print();
     void solveSudoku();
     void insertFromFile();
+    void testCases(); 
+
+    void fillBoard(ifstream& file);
 
     Sudoku();
     Sudoku(vector<vector<char>> temp);

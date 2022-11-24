@@ -197,22 +197,48 @@ void Sudoku::solveSudoku()
 
     print();
 }
+
+void Sudoku::fillBoard(ifstream& file) 
+{
+    for (int i = 0; i < board.size(); i++) 
+    {
+        for(int j = 0; j < board.size(); j++) 
+        {
+            file >> board.at(i).at(j);
+        }
+    }     
+}
+
 void Sudoku::insertFromFile() 
 {
     ifstream inFile;
 
-    inFile.open("tests.txt");
+    inFile.open("validSudokus.txt");
 
     if(inFile.fail()) 
     {
         cout << endl << "Error opening file :(" << endl;
     }
 
-    for (int i = 0; i < board.size(); i++) 
+    fillBoard(inFile);
+
+    inFile.close();
+}
+
+void Sudoku::testCases() 
+{
+    ifstream inFile;
+
+    inFile.open("validSudokus.txt");
+
+    while(true) 
     {
-        for(int j = 0; j < board.size(); j++) 
+        fillBoard(inFile);
+        solveSudoku();
+        if(inFile.fail()) 
         {
-            inFile >> board.at(i).at(j);
+            cout << endl << "All sudokus are solved OR filing opening the fail" << endl;
+            break;
         }
     }
 

@@ -47,9 +47,23 @@ int main()
 
 #endif
 
-    Sudoku a(test1);
+    Sudoku a, b;
+    a.insertFromFile();
     a.solveSudoku();
+
+    b.insertFromFile();
+    b.solveSudoku();
     
     
     return 1;
 }
+
+// . . 8 . . . . 1 6
+// . 5 7 . 3 8 . . .
+// 2 . . 1 . . . . .
+// 3 . 9 2 . 6 . . .
+// . 1 . . . . . 2 .
+// . . . 7 . 5 9 . 4
+// . . . . . 1 . . 8
+// . . . 9 6 . 7 5 .
+// 4 6 . . . . 3 . . 
