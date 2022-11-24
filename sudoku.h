@@ -31,8 +31,6 @@ public:
     
     void Tests(); 
 
-
-
     Sudoku();
     Sudoku(vector<vector<char>> temp);
 };
